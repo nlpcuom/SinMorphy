@@ -1,0 +1,12 @@
+read lexc Noun-Neut_BackVowel.lexc
+define LexiconNBV;
+
+read lexc Noun-UncountableConsEnd.lexc
+define LexiconUnC;
+
+read lexc Noun-Uncountable.lexc
+define LexiconUn;
+
+
+
+regex [LexiconNBV|LexiconUnC|LexiconUn];

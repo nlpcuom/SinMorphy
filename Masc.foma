@@ -1,0 +1,68 @@
+######### Rewrite rules  #########
+
+
+define Gem	%^Gem ;	
+
+#consonants
+define C [k |ක |ඛ | ග | ​ඝ | ච | ​ඡ | ජ | ට | ඨ | ඩ | ඪ | ණ | ත | ද | ධ | න | ප | ඵ | බ | භ | ම | ය | ර | ල | ව | ශ | ෂ | ස | හ | ළ | ​ෆ | ඟ | ඬ | ඳ | ඹ| ං];
+#verbs
+define V	[a |අ | ආ | ඇ | ඈ | ඉ | ඊ | උ | ඌ | එ | ඒ | ඔ | ඕ |ඓ |ඖ ];
+#vowel modifiers
+define VM	[් |ා |ැ |ෑ |ි |ී |ු |ූ |ෙ |ේ |ො |ෝ |ෛ |ෞ ];
+
+
+
+define Gemrule ක->{ක්ක} , ග->{ග්ග}, ච->{ච්ච}, ජ->{ජ්ජ}, ට->{ට්ට}, ඩ->{ඩ්ඩ}, ත->{ත්ත}, ද->{ද්ද}, න->{න්න}, ප->{ප්ප}, බ->{බ්බ}, ම->{ම්ම}, ල->{ල්ල}, ව->{ව්ව}, ස->{ස්ස}, හ->{ස්ස}, ඟ->{ංග}, ඳ->{න්ද}, ඹ ->{ම්බ} || _Gem .o. Gem -> 0 ;
+
+
+
+
+read lexc Noun-Masc_BackVowel.lexc
+define LexiconMBV;
+
+read lexc Noun-Masc_FrontVowelMidVowel.lexc
+define LexiconMFVMV;
+
+define GrammarMFVMV  LexiconMFVMV .o.
+                  ි-> 0 || _"^DelV" .o.
+                 ු->0 || _"^DelV" .o.
+                "^DelV"->0 ;
+
+
+read lexc Noun-Masc_Geminated_Consonant1.lexc
+define LexiconMGC;
+
+
+
+
+
+read lexc Noun-Masc_Geminated_Consonant3.lexc
+define LexiconMGC3;
+
+define GrammarMGC  LexiconMGC3 .o.
+                  ි-> 0 || _"^DelV" .o.
+                 ු->0 || _"^DelV" .o.
+                "^DelV"->0 .o.
+                Gemrule;
+                
+
+read lexc Noun-Masc_Consonant1.lexc
+define LexiconMC;
+
+
+define GrammarMC LexiconMC   .o. 
+                Gemrule;
+
+read lexc Noun-Masc_Retroflex1.1.lexc
+define LexiconMR;
+
+read lexc Noun-Masc_Retroflex1.2.lexc
+define LexiconMR2;
+
+read lexc Noun-Masc_Retroflex2.1.lexc
+define LexiconMR21;
+
+read lexc Noun-Masc_Retroflex2.2.lexc
+define LexiconMR22;
+
+regex [LexiconMBV|GrammarMFVMV|LexiconMGC|GrammarMC |GrammarMGC|LexiconMR|LexiconMR2|LexiconMR21|LexiconMR22];

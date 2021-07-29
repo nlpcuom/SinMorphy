@@ -1,0 +1,10 @@
+read lexc Noun-Neut_MidVowel.lexc
+define LexiconNMV;
+
+read lexc Noun-Neut_Retroflex2.lexc
+define LexiconNR2;
+
+read lexc Noun-Neut.Retroflex1.lexc
+define LexiconNR1;
+
+regex [LexiconNMV|LexiconNR2|LexiconNR1];

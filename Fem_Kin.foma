@@ -1,0 +1,31 @@
+read lexc Noun-Fem-frontVowelMidVowel1.lexc
+define LexiconFFVMV;
+
+
+define EEClass  ි-> 0 || _"DelV" .o.
+                "DelV"->0 ;
+
+define GrammarFFVMV 	LexiconFFVMV            .o.
+                        EEClass;
+
+
+
+read lexc Noun-Fem-BackVowel.lexc
+define LexiconFBV;
+
+read lexc Noun-Fem-Consonant.lexc
+define LexiconFC;
+
+read lexc Noun-Fem-FrontVowelMidVowel2.lexc
+define LexiconFFVMV2;
+
+read lexc Noun-Kinship1.lexc
+define LexiconKin1;
+
+read lexc Noun-Kinship2.lexc
+define LexiconKin2;
+
+read lexc Noun-Kinship3.lexc
+define LexiconKin3;
+
+regex [LexiconFC | LexiconFBV |GrammarFFVMV | LexiconFFVMV2 |LexiconKin1 |LexiconKin2 |LexiconKin3];

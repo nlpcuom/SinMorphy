@@ -1,0 +1,7 @@
+read lexc Noun-Neut_FrontMidVowel.lexc
+define LexiconNFMV;
+
+read lexc Noun-Neut_consonant.lexc
+define LexiconNC;
+
+regex [LexiconNFMV|LexiconNC];
